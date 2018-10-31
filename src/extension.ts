@@ -24,7 +24,8 @@ export function activate(context: vscode.ExtensionContext) {
         }
         let selection = editor.selection;
         let text = editor.document.getText(selection);
-        sortObject(text);
+        const result = sortObject(text);
+        console.log(result)
 
         // Display a message box to the user
         vscode.window.showInformationMessage('Hello World!');

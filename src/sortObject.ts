@@ -14,25 +14,16 @@ export default function sortObject(text: string) {
   const objectArray = _stringToArray(_getSubString(startBracketPosition + 1, endBracketPosition - 2, text));
   const sortedArray = _sort(objectArray);
   const sortedString = _join(sortedArray);
-  const result = _insertBack(startBracketPosition+1, endBracketPosition-2, sortedString, text);
-  console.log(result)
+  return _insertBack(startBracketPosition + 1, endBracketPosition - 2, sortedString, text);
 }
 
-const _getSubString = (start: number, end: number, text: string) => {
-  return text.substring(start, end);
-};
+const _getSubString = (start: number, end: number, text: string) => text.substring(start, end);
 
-const _stringToArray = (text: string) => {
-  return text.split(',');
-};
+const _insertBack = (start: number, end: number, sortedText: string, originalText: string) => `${originalText.substring(0, start)}${sortedText}${originalText.substring(end)}`
 
-const _join = (arr: Array<string>) => {
-  return arr.join(',')
-};
+const _join = (arr: Array<string>) => arr.join(',');
 
-const _insertBack = (start: number, end: number, sortedText: string, originalText: string) => {
-    return `${originalText.substring(0, start)}${sortedText}${originalText.substring(end)}`;
-}
+const _stringToArray = (text: string) => text.split(',');
 
 const _sort = (objectArray: Array<string>) => {
   return objectArray.sort((a: string, b: string) => {
